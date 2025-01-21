@@ -1,12 +1,12 @@
 class Solution:
     def gridGame(self, grid: List[List[int]]) -> int:
-        first_row_sum = sum(grid[0])
-        second_row_sum = 0
-        minimum_sum = float("inf")
-        for turn_index in range(len(grid[0])):
-            first_row_sum -= grid[0][turn_index]
-            # Find the minimum maximum value out of first_row_sum and
-            # second_row_sum.
-            minimum_sum = min(minimum_sum, max(first_row_sum, second_row_sum))
-            second_row_sum += grid[1][turn_index]
-        return minimum_sum
+        min_result = float('inf')
+        row1_sum = sum(grid[0])
+        row2_sum = 0
+        
+        for i in range(len(grid[0])):
+            row1_sum -= grid[0][i]
+            min_result = min(min_result, max(row1_sum, row2_sum))
+            row2_sum += grid[1][i]
+        
+        return min_result
